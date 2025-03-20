@@ -92,6 +92,12 @@ The file `tracked.pt` is generated using <a href="https://github.com/xg-chu/GAGA
 The style motion is tracked with EMICA module in <a href="https://github.com/xg-chu/GAGAvatar_track">`GAGAvatar_track` </a>. Each contains `50*106` dimensional data. `50` is 2 seconds consecutive frames, `106` is `100` expression code and `6` pose code (base+jaw). Here I've included several examples of tracked style motion.
 </details>
 
+## Training
+
+This version modifies the VQVAE part compared to the paper version.
+
+The training code and the paper version code are still in preparation and are expected to be released later.
+
 
 ## Acknowledgements
 
