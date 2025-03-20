@@ -1,0 +1,15 @@
+{
+    "AR_CONFIG": {
+        "T_DEPTH": 12,
+        "T_NUM_HEADS": 12,
+        "PREV_RATIO": 1
+    },
+    "VAE_CONFIG": {
+        "MOTION_DIM": 106,
+        "V_CODE_DIM": 32,
+        "T_DEPTH": 8,
+        "T_NUM_HEADS": 8,
+        "T_HIDDEN_DIM": 512,
+        "V_PATCH_NUMS": [1, 5, 25, 50, 100]
+    }
+}

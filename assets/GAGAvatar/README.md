@@ -1,0 +1,1 @@
+This is where GAGAvatar's related weights and tracked real avatars are stored.
