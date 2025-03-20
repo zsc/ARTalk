@@ -39,6 +39,9 @@ cd ARTalk
 ```
 
 ### Build environment
+I will prepare a new environment guide as soon as possible.
+
+For now, please use GAGAvatar's `environment.yml` and install gradio and other dependent libraries.
 ```
 conda env create -f environment.yml
 conda activate ARTalk
