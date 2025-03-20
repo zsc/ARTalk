@@ -1,4 +1,5 @@
 <h1 align="center"><b><img src="./assets/artalk_logo.png" width="420"/></b></h1>
+<h1 align="center"><b>ARTalk: Speech-Driven 3D Head Animation via Autoregressive Model</b></h1>
 <h3 align="center">
     <a href='https://arxiv.org/abs/2502.20323'><img src='https://img.shields.io/badge/ArXiv-PDF-red'></a> &nbsp; 
     <a href='https://xg-chu.site/project_artalk/'><img src='https://img.shields.io/badge/Project-Page-blue'></a> &nbsp; 
