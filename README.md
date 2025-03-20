@@ -73,11 +73,13 @@ python inference.py --run_app
 
 ARTalk can be used via command line:
 ```
-python inference.py -a your_audio_path --shape_id your_apperance --style_id your_style_motion
+python inference.py -a your_audio_path --shape_id your_apperance --style_id your_style_motion --clip_length 750
 ```
 `--shape_id` can be specified with `mesh` or tracked real avatars stored in `tracked.pt`.
 
 `--style_id` can be specified with the name of `*.pt` stored in `assets/style_motion`.
+
+`--clip_length` sets the maximum duration of the rendered video and can be adjusted as needed. Longer videos may take more time to render.
 
 <details>
 <summary><span>Track new real head avatar and new style motion</span></summary>
