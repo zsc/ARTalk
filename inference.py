@@ -13,7 +13,6 @@ from tqdm import tqdm
 
 from app import BitwiseARModel
 from app.flame_model import FLAMEModel, RenderMesh
-from app.GAGAvatar import GAGAvatar
 from app.utils_videos import write_video
 
 class ARTAvatarInferEngine:
@@ -35,6 +34,7 @@ class ARTAvatarInferEngine:
         self.style_motion = None
 
         if load_gaga:
+            from app.GAGAvatar import GAGAvatar
             self.GAGAvatar = GAGAvatar().to(device)
             self.GAGAvatar_flame = FLAMEModel(n_shape=300, n_exp=100, scale=5.0, no_lmks=True).to(device)
 
@@ -125,8 +125,11 @@ def run_gradio_app(engine):
         return os.path.join(engine.output_dir, '{}.mp4'.format(save_name)), os.path.join(engine.output_dir, '{}_motions.pt'.format(save_name))
 
     # create the gradio app
-    all_gagavatar_id = list(engine.GAGAvatar.all_gagavatar_id.keys())
-    all_gagavatar_id = sorted(all_gagavatar_id)
+    if hasattr(engine, 'GAGAvatar'):
+        all_gagavatar_id = list(engine.GAGAvatar.all_gagavatar_id.keys())
+        all_gagavatar_id = sorted(all_gagavatar_id)
+    else:
+        all_gagavatar_id = []
     all_style_id = [os.path.basename(i) for i in os.listdir('assets/style_motion')]
     all_style_id = sorted([i.split('.')[0] for i in all_style_id if i.endswith('.pt')])
     with gr.Blocks(title="ARTalk: Speech-Driven 3D Head Animation via Autoregressive Model") as demo:
@@ -171,16 +174,28 @@ def run_gradio_app(engine):
         btn = gr.Button("Generate")
         btn.click(fn=process_audio, inputs=inputs, outputs=[video_output, motion_output])
 
-        examples = [
-            ["Audio", "demo/jp1.wav", None, None, "12.jpg", "curious_0"],
-            ["Audio", "demo/jp2.wav", None, None, "12.jpg", "natural_3"],
-            ["Audio", "demo/eng1.wav", None, None, "12.jpg", "natural_2"],
-            ["Audio", "demo/eng2.wav", None, None, "12.jpg", "happy_1"],
-            ["Audio", "demo/cn1.wav", None, None, "11.jpg", "natural_1"],
-            ["Audio", "demo/cn2.wav", None, None, "12.jpg", "happy_2"],
-            ["Text", None, "Hello, this is a demo of ARTalk! Let's create something fun together.", "English", "12.jpg", "happy_0"],
-            ["Text", None, "让我们一起创造一些有趣的东西吧。", "中文", "12.jpg", "natural_0"],
-        ]
+        if hasattr(engine, 'GAGAvatar'):
+            examples = [
+                ["Audio", "demo/jp1.wav", None, None, "12.jpg", "curious_0"],
+                ["Audio", "demo/jp2.wav", None, None, "12.jpg", "natural_3"],
+                ["Audio", "demo/eng1.wav", None, None, "12.jpg", "natural_2"],
+                ["Audio", "demo/eng2.wav", None, None, "12.jpg", "happy_1"],
+                ["Audio", "demo/cn1.wav", None, None, "11.jpg", "natural_1"],
+                ["Audio", "demo/cn2.wav", None, None, "12.jpg", "happy_2"],
+                ["Text", None, "Hello, this is a demo of ARTalk! Let's create something fun together.", "English", "12.jpg", "happy_0"],
+                ["Text", None, "让我们一起创造一些有趣的东西吧。", "中文", "12.jpg", "natural_0"],
+            ]
+        else:
+            examples = [
+                ["Audio", "demo/jp1.wav", None, None, "mesh", "curious_0"],
+                ["Audio", "demo/jp2.wav", None, None, "mesh", "natural_3"],
+                ["Audio", "demo/eng1.wav", None, None, "mesh", "natural_2"],
+                ["Audio", "demo/eng2.wav", None, None, "mesh", "happy_1"],
+                ["Audio", "demo/cn1.wav", None, None, "mesh", "natural_1"],
+                ["Audio", "demo/cn2.wav", None, None, "mesh", "happy_2"],
+                ["Text", None, "Hello, this is a demo of ARTalk! Let's create something fun together.", "English", "mesh", "happy_0"],
+                ["Text", None, "让我们一起创造一些有趣的东西吧。", "中文", "mesh", "natural_0"],
+            ]
         gr.Examples(examples=examples, inputs=inputs, outputs=video_output)
 
         def toggle_input(choice):

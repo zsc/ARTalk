@@ -40,24 +40,19 @@ cd ARTalk
 ```
 
 ### Build environment
-I will prepare a new environment guide as soon as possible.
 
-For now, please use GAGAvatar's `environment.yml` and install gradio and other dependent libraries.
 ```
 conda env create -f environment.yml
 conda activate ARTalk
 ```
 
-<details>
-<summary><span>Install GAGAvatar Module (If you want to use realistic avatars)</span></summary>
+Install the GAGAvatar module (if you want to use realistic avatars). If it is not installed, set `load_gaga` to `False` when initializing `ARTAvatarInferEngine`.
 
 ```
 git clone --recurse-submodules git@github.com:xg-chu/diff-gaussian-rasterization.git
 pip install ./diff-gaussian-rasterization
 rm -rf ./diff-gaussian-rasterization
 ```
-
-</details>
 
 ### Prepare resources
 Prepare resources with:
