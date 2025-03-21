@@ -66,7 +66,12 @@ bash ./build_resources.sh
 We provide a simple Gradio demo to demonstrate ARTalk's capabilities.
 
 You can generate videos by **uploading audio**, **recording audio**, or **entering text**:
-<h1 align="left"><b><img src="./assets/artalk_gradio.jpg" width="512"/></b></h1>
+<h1 align="left"><b>
+<picture>
+  <source srcset="./assets/dark_artalk_gradio.jpg" media="(prefers-color-scheme: dark)" width="512">
+  <img src="./assets/light_artalk_gradio.jpg" alt="Adaptive Image" width="512">
+</picture>
+</b></h1>
 ```
 python inference.py --run_app
 ```
