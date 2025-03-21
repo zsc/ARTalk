@@ -63,7 +63,10 @@ bash ./build_resources.sh
 ## Quick Start Guide
 ### Using <a href="https://github.com/gradio-app/gradio">Gradio</a> Interface
 
-We provide a simple Gradio demo to demonstrate ARTalk's capabilities:
+We provide a simple Gradio demo to demonstrate ARTalk's capabilities.
+
+You can generate videos by **uploading audio**, **recording audio**, or **entering text**:
+<h1 align="left"><b><img src="./assets/artalk_gradio.jpg" width="512"/></b></h1>
 ```
 python inference.py --run_app
 ```
