@@ -1,4 +1,5 @@
-# Modified based on code from https://github.com/FoundationVision/VAR.
+#!/usr/bin/env python
+# Copyright (c) Xuangeng Chu (xg.chu@outlook.com)
 
 import torch
 from transformers import Wav2Vec2Model, Wav2Vec2Config
