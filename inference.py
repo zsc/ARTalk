@@ -163,7 +163,7 @@ def run_gradio_app(engine):
                 )
                 style = gr.Dropdown(
                     choices=["default"] + all_style_id,
-                    value="default", label="Choose the style of the speaker",
+                    value="natural_0", label="Choose the style of the speaker",
                 )
             with gr.Column():
                 gr.Markdown("### Generated Video")
