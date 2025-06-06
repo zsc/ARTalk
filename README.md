@@ -102,6 +102,10 @@ This version modifies the VQVAE part compared to the paper version.
 
 The training code and the paper version code are still in preparation and are expected to be released later.
 
+## huggingface DockerFile 
+
+To use The DockerFile on huggingface, you have to change the Gradio port 
+
 
 ## Acknowledgements
 
